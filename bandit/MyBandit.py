@@ -5,18 +5,25 @@ class Bandit:
     """
     Generic epsilon-greedy bandit that you need to improve
     """
-    def __init__(self, arms, epsilon=0.1):
+    def __init__(self, arms, epsilon=0.7, epsilon_decrease=0.95, epsilon_min=0.05, history_window=100):
         """
         Initiates the bandits
 
         :param arms: List of arms
         :param epsilon: Epsilon value for random exploration
+        :param epsilon_decrease: Decrease epsilon value over time
         """
         self.arms = arms
         self.epsilon = epsilon
         self.frequencies = [0] * len(arms)
         self.sums = [0] * len(arms)
         self.expected_values = [0] * len(arms)
+        self.epsilon_decrease = epsilon_decrease
+        self.epsilon_min = epsilon_min
+
+        self.history = {arm: [0] for arm in range(0, len(arms))}
+        self.history_window = history_window
+        
 
     def run(self):
         """
@@ -38,9 +45,18 @@ class Bandit:
         :param reward: The reward that was generated
         """
         arm_index = self.arms.index(arm)
-        sum = self.sums[arm_index] + reward
-        self.sums[arm_index] = sum
+        
         frequency = self.frequencies[arm_index] + 1
         self.frequencies[arm_index] = frequency
-        expected_value = sum / frequency
-        self.expected_values[arm_index] = expected_value
+        sum_ = self.sums[arm_index] + reward
+        self.sums[arm_index] = sum_
+        # expected_value = sum / frequency
+        # self.expected_values[arm_index] = expected_value
+
+        self.history[arm_index].append(reward)
+        freq = min(self.history_window, len(self.history[arm_index]))
+        self.expected_values[arm_index] = sum(self.history[arm_index][len(self.history[arm_index]) - freq:])/freq
+
+        # Decrease epsilon value over time
+        if self.epsilon > self.epsilon_min:
+            self.epsilon *= self.epsilon_decrease
