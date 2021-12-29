@@ -1,5 +1,6 @@
 import numpy
 import random
+import math
 from collections import defaultdict
 
 
@@ -13,8 +14,13 @@ def reshape_obs(observation):
     direction of the ball.
     :return: The reshaped/discretized observation
     """
-    # TODO: Discretize/simplify
-    # transformation
+    # Discretizing 
+    # TODO simplify (if needed)
+   
+    possible_pos = 10
+    observation[0] = [math.ceil(data * possible_pos) / possible_pos for data in observation[0]]
+    observation[1] = [math.ceil(data * possible_pos) / possible_pos for data in observation[1]]
+    
     return f'{numpy.asarray(observation).reshape(-1, 10)}'
 
 
