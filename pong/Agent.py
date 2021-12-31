@@ -14,6 +14,7 @@ def reshape_obs(observation):
     direction of the ball.
     :return: The reshaped/discretized observation
     """
+<<<<<<< HEAD
     _reshaped_obs = np.zeros((len(observation),10), dtype=int)
     for i in range(len(observation)):
         for j in range(10):
@@ -23,6 +24,16 @@ def reshape_obs(observation):
                 _reshaped_obs[i][j] = observation[i][j]   
     print(_reshaped_obs) 
     return f'{_reshaped_obs.reshape(-1, 10)}'
+=======
+    # Discretizing 
+    # TODO simplify (if needed)
+   
+    possible_pos = 10
+    observation[0] = [math.ceil(data * possible_pos) / possible_pos for data in observation[0]]
+    observation[1] = [math.ceil(data * possible_pos) / possible_pos for data in observation[1]]
+    
+    return f'{numpy.asarray(observation).reshape(-1, 10)}'
+>>>>>>> 015a965fdd97395adb625d277d9326f1b431f5e6
 
 
 class Agent:
