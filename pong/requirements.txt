@@ -1,4 +1,4 @@
 git+https://github.com/TimKam/ma-gym.git
 matplotlib
 numpy
-pyglet==1.5.11
+pyglet==1.5.21

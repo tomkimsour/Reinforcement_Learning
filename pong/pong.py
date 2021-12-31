@@ -2,7 +2,7 @@ import argparse
 
 import gym
 from ma_gym.wrappers import Monitor
-# import matplotlib.pyplot as plt # plotting dependency
+import matplotlib.pyplot as plt # plotting dependency
 
 from Agent import Agent
 from RandomAgent import RandomAgent
@@ -61,7 +61,7 @@ if __name__ == '__main__':
                 actions.append(action)
                 # Use the command below to print the exact actions that the
                 # agents are executing:
-                # print([action_meanings[index][action] for action in actions])
+                print([action_meanings[index][action] for action in actions])
             # Trigger the actual execution
             observations, rewards, are_done, infos = env.step(actions)
             # For each agent, update observations and rewards
@@ -73,10 +73,10 @@ if __name__ == '__main__':
                     observations
                 )
             # Debug: print obs, rewards, info
-            # print(observations, rewards, infos)
+            print(observations, rewards, infos)
             # Rewards are either 0 or [1, -1], or [-1, 1], try out by out-commenting the line below
             # Note that your agent is agent 0
-            # if not (rewards[0] == 0 and rewards[1] == 0): print(rewards)
+            if not (rewards[0] == 0 and rewards[1] == 0): print(rewards)
             for (index, reward) in enumerate(rewards):
                 ep_rewards[index] += reward
             env.render()
@@ -96,9 +96,10 @@ if __name__ == '__main__':
         if len(wins) > 10:
             print(f'Last 10 games: {sum(wins[-10:]) - sum(losses[-10:])}')
         # remove comments for a primitive plot; also remove comment for dependency (line 5)!
-        # plt.clf()
-        # plt.cla()
-        # plt.close()
-        # plt.plot(win_loss_history)
-        # plt.pause(0.1)
+        plt.clf()
+        plt.cla()
+        plt.close()
+        plt.plot(win_loss_history)
+        plt.pause(0.1)
+        break
     env.close()
