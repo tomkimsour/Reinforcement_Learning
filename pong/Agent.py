@@ -14,26 +14,12 @@ def reshape_obs(observation):
     direction of the ball.
     :return: The reshaped/discretized observation
     """
-<<<<<<< HEAD
-    _reshaped_obs = np.zeros((len(observation),10), dtype=int)
-    for i in range(len(observation)):
-        for j in range(10):
-            if j <5 :
-                _reshaped_obs[i][j] = math.trunc(observation[i][j],1)
-            else :
-                _reshaped_obs[i][j] = observation[i][j]   
-    print(_reshaped_obs) 
-    return f'{_reshaped_obs.reshape(-1, 10)}'
-=======
-    # Discretizing 
-    # TODO simplify (if needed)
    
     possible_pos = 10
     observation[0] = [math.ceil(data * possible_pos) / possible_pos for data in observation[0]]
     observation[1] = [math.ceil(data * possible_pos) / possible_pos for data in observation[1]]
     
-    return f'{numpy.asarray(observation).reshape(-1, 10)}'
->>>>>>> 015a965fdd97395adb625d277d9326f1b431f5e6
+    return f'{np.asarray(observation).reshape(-1, 10)}'
 
 
 class Agent:
@@ -43,11 +29,11 @@ class Agent:
 
     def __init__(
             self, id, actions_n, obs_space_shape,
-            gamma=0.9, # pick reasonable values for all of these!
-            epsilon=0.2,
-            min_epsilon=0.1,
-            epsilon_decay=0.8,
-            alpha=1
+            gamma=0.90, # pick reasonable values for all of these!
+            epsilon=0.1,
+            min_epsilon=0.01,
+            epsilon_decay=0.01,
+            alpha=0.1
     ):
         """
         Initiates the agent
@@ -79,12 +65,8 @@ class Agent:
         :return: The probabilities for each action in the form of a numpy
         array of length of the action space.
         """
-        print(observation)
-        print("new object",reshape_obs(observation))
-        # print(self.q[0])
-        # print(self.q[1])
-        # print(self.q[6])
-        return np.array[self.q[observation]]
+        shaped_obs = reshape_obs(observation)
+        return self.q[shaped_obs]
 
     def act(self, observation):
         """
@@ -97,12 +79,10 @@ class Agent:
         # Action Space: 0: Noop, 1: Up, 2: Down
         # Agent Observation : Agent Coordinate + Ball location ( head and tail)
         # epsilon greedy rule
-        print("the act started")
         if random.random() < self.epsilon:
             action =  random.randint(0,2)
         # pick best reward action
         else :
-            print("let s format the data")
             action = np.argmax(self.determine_action_probabilities(observation))
         return action
 
