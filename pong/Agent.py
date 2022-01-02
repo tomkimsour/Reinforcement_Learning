@@ -19,7 +19,10 @@ def reshape_obs(observation):
     observation[0] = [math.ceil(data * possible_pos) / possible_pos for data in observation[0]]
     observation[1] = [math.ceil(data * possible_pos) / possible_pos for data in observation[1]]
     
-    return f'{np.asarray(observation).reshape(-1, 10)}'
+    reshape_obs = np.asarray(observation).reshape(-1, 10) 
+    reshape_obs = np.delete(reshape_obs,[1,3],1)
+    return f'{np.asarray(reshape_obs).reshape(-1, 8)}'
+
 
 
 class Agent:
@@ -103,4 +106,8 @@ class Agent:
         td_target = reward + self.gamma * self.q[reshape_obs(new_observation)][next_action]
         td_delta = td_target - self.q[reshape_obs(observation)][action]
         self.q[reshape_obs(observation)][action] += self.alpha * td_delta
+
+        # Decrease epsilon value over time
+        if self.epsilon > self.min_epsilon:
+            self.epsilon *= self.epsilon_decay
 

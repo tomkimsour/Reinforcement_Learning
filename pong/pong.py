@@ -3,7 +3,7 @@ import argparse
 import gym
 import numpy as np
 from ma_gym.wrappers import Monitor
-# import matplotlib.pyplot as plt # plotting dependency
+import matplotlib.pyplot as plt # plotting dependency
 
 from Agent import Agent
 from RandomAgent import RandomAgent
@@ -24,6 +24,8 @@ if __name__ == '__main__':
     parser.add_argument('--episodes', type=int, default=550,
                         help='episodes (default: %(default)s)')
     args = parser.parse_args()
+    maxWinValue = 0
+    maxWinParameters= []
     for gamma in np.arange(0.75,0.96,0.1):
         for epsilon in np.arange(0.1,0.3,0.1):
             # Set up environment
@@ -94,7 +96,11 @@ if __name__ == '__main__':
                 win_loss_history.append(sum(wins) - sum(losses))
                 if ep_i == 349:
                     print('Episode #{} Rewards: {}'.format(ep_i, ep_rewards))
-                    print(f'Wins - losses: {sum(wins) - sum(losses)}')
+                    winNumber = sum(wins) - sum(losses)
+                    print(f'Wins - losses: {winNumber}')
+                    if winNumber > maxWinValue :
+                        maxWinValue = winNumber 
+                        maxWinParameters = [my_agent.gamma,my_agent.epsilon,my_agent.min_epsilon,my_agent.epsilon_decay,my_agent.alpha]
                     print(f'Gamma:{my_agent.gamma}')
                     print(f'Epsilon: {my_agent.epsilon}')
                     print(f'Min epsilon: {my_agent.min_epsilon}')
@@ -103,9 +109,10 @@ if __name__ == '__main__':
                     if len(wins) > 10:
                         print(f'Last 10 games: {sum(wins[-10:]) - sum(losses[-10:])}')
                 # remove comments for a primitive plot; also remove comment for dependency (line 5)!
-                # plt.clf()
-                # plt.cla()
-                # plt.close()
-                # plt.plot(win_loss_history)
-                # plt.pause(0.1)
+                plt.clf()
+                plt.cla()
+                plt.close()
+                plt.plot(win_loss_history)
+                plt.pause(0.1)
             env.close()
+    print(maxWinParameters)
