@@ -1,61 +1,8 @@
-Action space: [Discrete(3), Discrete(3)]
-Observation (state) space: [Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32), Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32)]
 Episode #349 Rewards: [10, -10]
-Wins - losses: 2234
-Gamma:0.75
-Epsilon: 0.001
-Min epsilon: 0.01
-Alpha: 0.1
-Q table size: 1870
-Last 10 games: 102
-Action space: [Discrete(3), Discrete(3)]
-Observation (state) space: [Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32), Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32)]
-Episode #349 Rewards: [4, -4]
-Wins - losses: 1758
-Gamma:0.75
-Epsilon: 0.002
-Min epsilon: 0.01
-Alpha: 0.1
-Q table size: 1857
-Last 10 games: 72
-Action space: [Discrete(3), Discrete(3)]
-Observation (state) space: [Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32), Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32)]
-Episode #349 Rewards: [10, -10]
-Wins - losses: 2368
-Gamma:0.85
-Epsilon: 0.001
-Min epsilon: 0.01
-Alpha: 0.1
-Q table size: 1865
-Last 10 games: 92
-Action space: [Discrete(3), Discrete(3)]
-Observation (state) space: [Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32), Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32)]
-Episode #349 Rewards: [12, -12]
-Wins - losses: 1918
+Wins - losses: 2550
 Gamma:0.85
 Epsilon: 0.002
 Min epsilon: 0.01
 Alpha: 0.1
-Q table size: 1849
-Last 10 games: 94
-Action space: [Discrete(3), Discrete(3)]
-Observation (state) space: [Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32), Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32)]
-Episode #349 Rewards: [12, -12]
-Wins - losses: 1980
-Gamma:0.95
-Epsilon: 0.001
-Min epsilon: 0.01
-Alpha: 0.1
-Q table size: 1857
-Last 10 games: 104
-Action space: [Discrete(3), Discrete(3)]
-Observation (state) space: [Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32), Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1.], (10,), float32)]
-Episode #349 Rewards: [10, -10]
-Wins - losses: 1956
-Gamma:0.95
-Epsilon: 0.002
-Min epsilon: 0.01
-Alpha: 0.1
-Q table size: 1861
-Last 10 games: 76
-[0.85, 0.001, 0.01, 0.01, 0.1]
+Q table size: 1877
+Last 10 games: 128

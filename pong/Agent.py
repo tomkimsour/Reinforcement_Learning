@@ -32,8 +32,8 @@ class Agent:
 
     def __init__(
             self, id, actions_n, obs_space_shape,
-            gamma=0.90, # pick reasonable values for all of these!
-            epsilon=0.1,
+            gamma=0.85, # pick reasonable values for all of these!
+            epsilon=0.2,
             min_epsilon=0.01,
             epsilon_decay=0.01,
             alpha=0.1
